@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CJ'S — Sorry, We're Full</title>
+<link rel="icon" type="image/png" href="cjs-logo.png" />
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -79,7 +80,7 @@
     padding: 4rem 2rem;
   }
 
-  .mark { width: 66px; height: 66px; margin-bottom: 2.2rem; opacity: 0; animation: fade 1.4s 0.2s forwards; }
+  .mark { width: auto; height: 96px; display: block; margin-bottom: 2.2rem; opacity: 0; animation: fade 1.4s 0.2s forwards; }
 
   .eyebrow {
     font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
@@ -138,13 +139,15 @@
     position: relative; z-index: 3;
     border-top: 1px solid rgba(244, 239, 230, 0.12);
     overflow: hidden;
+    display: flex; align-items: center;
+    min-height: 5rem;
     opacity: 0; animation: fade 1.4s 1.5s forwards;
   }
   .marquee-inner {
     display: flex; align-items: center;
     white-space: nowrap;
     animation: marquee 34s linear infinite;
-    padding: 1.5rem 0;
+    width: max-content;
   }
   .marquee span {
     font-family: var(--display);
@@ -199,21 +202,13 @@
 
   <!-- MAIN -->
   <main>
-    <svg class="mark" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="13" y="24" width="34" height="18" rx="3" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
-      <rect x="17" y="19" width="26" height="9" rx="2.5" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
-      <path d="M13 30 L7 30 Q5 30 5 33 L5 39 Q5 41 7 41 L13 41" stroke="var(--gold)" stroke-width="1.2" fill="none"/>
-      <path d="M47 30 L53 30 Q55 30 55 33 L55 39 Q55 41 53 41 L47 41" stroke="var(--gold)" stroke-width="1.2" fill="none"/>
-      <line x1="19" y1="42" x2="19" y2="47" stroke="var(--gold)" stroke-width="1.2"/>
-      <line x1="41" y1="42" x2="41" y2="47" stroke="var(--gold)" stroke-width="1.2"/>
-      <path d="M20 29 Q30 33 40 29" stroke="var(--gold)" stroke-width="0.8" fill="none" opacity="0.6"/>
-    </svg>
+    <img class="mark" src="cjs-logo.png" alt="CJ's Moving Company — armchair mark" />
 
     <p class="eyebrow">It's a Lifestyle — Apparently</p>
 
     <h1>Sorry,<em>we're completely full.</em></h1>
 
-    <p class="lede">We are fully booked until 2027. We're as surprised as you are but it turns out people will pay <span class="punch">$23,000</span> to have their couch carried up a flight of stairs. While you wait, we're rebuilding this website. The old one worked perfectly and told you everything, we just wanted to invest in a better experience for you. Leave your email and we'll let you know the moment we're willing to lift your things again.</p>
+    <p class="lede">Every slot is booked solid. We're as surprised as you are — turns out people will pay <span class="punch">$23,000</span> to have their couch carried up a flight of stairs. While you wait, we're rebuilding this website. The old one worked perfectly and told you everything, which apparently isn't allowed anymore. Leave your email and we'll let you know the moment we're willing to lift your things again.</p>
 
     <div class="rule"></div>
 
