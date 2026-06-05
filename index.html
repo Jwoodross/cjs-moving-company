@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CJ'S — Arriving Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --burgundy: #5E1A26;
+    --burgundy-deep: #3D101A;
+    --cream: #F4EFE6;
+    --gold: #B89968;
+    --ink: #1C1414;
+    --display: 'Bodoni Moda', serif;
+    --body: 'Jost', sans-serif;
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: var(--body);
+    background: var(--burgundy);
+    color: var(--cream);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  ::selection { background: var(--gold); color: var(--burgundy-deep); }
+
+  /* atmospheric depth */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(184, 153, 104, 0.14) 0%, transparent 45%),
+      radial-gradient(ellipse at 80% 15%, rgba(61, 16, 26, 0.55) 0%, transparent 55%),
+      radial-gradient(ellipse at center, transparent 25%, rgba(61, 16, 26, 0.5) 100%);
+    pointer-events: none;
+  }
+  /* film grain */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    z-index: 2;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px;
+  }
+
+  /* ─── TOP BAR ─── */
+  .top {
+    position: relative; z-index: 3;
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(244, 239, 230, 0.12);
+  }
+  .top-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(244, 239, 230, 0.5);
+  }
+  .top-status {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .status-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--gold); animation: pulse 2.4s infinite;
+  }
+
+  /* ─── MAIN ─── */
+  main {
+    position: relative; z-index: 3;
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .mark {
+    width: 70px; height: 70px;
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fade 1.4s 0.2s forwards;
+  }
+
+  .eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fade 1.4s 0.4s forwards;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(3.5rem, 13vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    text-indent: 0.04em;
+    opacity: 0; animation: reveal 1.6s 0.55s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  h1 em {
+    display: block;
+    font-style: italic;
+    font-size: 0.32em;
+    letter-spacing: 0.06em;
+    margin-top: 1.2rem;
+    color: rgba(244, 239, 230, 0.85);
+  }
+
+  .lede {
+    margin-top: 2.5rem;
+    max-width: 420px;
+    font-size: 1rem;
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+    color: rgba(244, 239, 230, 0.65);
+    opacity: 0; animation: fade 1.4s 0.95s forwards;
+  }
+
+  .rule {
+    width: 50px; height: 1px;
+    background: var(--gold);
+    margin: 3rem 0;
+    opacity: 0; animation: fade 1.4s 1.1s forwards;
+  }
+
+  /* ─── SIGNUP ─── */
+  .signup {
+    width: 100%; max-width: 440px;
+    opacity: 0; animation: fade 1.4s 1.25s forwards;
+  }
+  .signup-label {
+    font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(244, 239, 230, 0.5);
+    margin-bottom: 1.4rem;
+  }
+  .signup-row {
+    display: flex;
+    border-bottom: 1px solid rgba(244, 239, 230, 0.3);
+    transition: border-color 0.4s;
+  }
+  .signup-row:focus-within { border-color: var(--gold); }
+  .signup-row input {
+    flex: 1;
+    background: transparent; border: none;
+    color: var(--cream);
+    font-family: var(--body); font-weight: 300;
+    font-size: 1rem;
+    padding: 0.9rem 0.5rem 0.9rem 0;
+    outline: none;
+  }
+  .signup-row input::placeholder { color: rgba(244, 239, 230, 0.35); }
+  .signup-row button {
+    background: transparent; border: none;
+    color: var(--gold);
+    font-family: var(--body);
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  .signup-row button:hover { color: var(--cream); }
+  .signup-note {
+    margin-top: 1rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: rgba(244, 239, 230, 0.35);
+  }
+
+  .signup-success {
+    display: none;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--gold);
+    padding: 1rem 0;
+  }
+  .signup-success.show { display: block; animation: fade 0.6s forwards; }
+
+  /* ─── PREVIEW STRIP ─── */
+  .preview {
+    position: relative; z-index: 3;
+    border-top: 1px solid rgba(244, 239, 230, 0.12);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    opacity: 0; animation: fade 1.4s 1.5s forwards;
+  }
+  .preview-item {
+    padding: 1.4rem 1rem;
+    text-align: center;
+    border-right: 1px solid rgba(244, 239, 230, 0.08);
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: rgba(244, 239, 230, 0.6);
+    transition: color 0.4s, background 0.4s;
+  }
+  .preview-item:last-child { border-right: none; }
+  .preview-item:hover { color: var(--cream); background: rgba(244, 239, 230, 0.03); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative; z-index: 3;
+    padding: 1.8rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(244, 239, 230, 0.12);
+    font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(244, 239, 230, 0.4);
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--cream); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(35px); letter-spacing: 0.14em; }
+    to { opacity: 1; transform: translateY(0); letter-spacing: 0.04em; }
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 680px) {
+    .top { padding: 1.5rem; }
+    .top-eyebrow { display: none; }
+    main { padding: 3rem 1.5rem; }
+    .preview { grid-template-columns: repeat(2, 1fr); }
+    .preview-item:nth-child(2n) { border-right: none; }
+    .preview-item { border-bottom: 1px solid rgba(244, 239, 230, 0.08); }
+    footer { padding: 1.5rem; justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- TOP -->
+  <div class="top">
+    <span class="top-eyebrow">CJ'S Moving Company</span>
+    <span class="top-status"><span class="status-dot"></span> Arriving 2026</span>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    <svg class="mark" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="13" y="24" width="34" height="18" rx="3" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
+      <rect x="17" y="19" width="26" height="9" rx="2.5" fill="none" stroke="var(--gold)" stroke-width="1.2"/>
+      <path d="M13 30 L7 30 Q5 30 5 33 L5 39 Q5 41 7 41 L13 41" stroke="var(--gold)" stroke-width="1.2" fill="none"/>
+      <path d="M47 30 L53 30 Q55 30 55 33 L55 39 Q55 41 53 41 L47 41" stroke="var(--gold)" stroke-width="1.2" fill="none"/>
+      <line x1="19" y1="42" x2="19" y2="47" stroke="var(--gold)" stroke-width="1.2"/>
+      <line x1="41" y1="42" x2="41" y2="47" stroke="var(--gold)" stroke-width="1.2"/>
+      <path d="M20 29 Q30 33 40 29" stroke="var(--gold)" stroke-width="0.8" fill="none" opacity="0.6"/>
+    </svg>
+
+    <p class="eyebrow">Est. 2013 — It's a Lifestyle</p>
+
+    <h1>CJ'S<em>The House of Moving</em></h1>
+
+    <p class="lede">A maison of relocation, arrangement, and craft is being prepared. Our full collection of services — and the doors to reservations — arrive shortly.</p>
+
+    <div class="rule"></div>
+
+    <div class="signup">
+      <div class="signup-label">Join the waitlist</div>
+      <div id="signupForm">
+        <div class="signup-row">
+          <input type="email" id="email" placeholder="Your email address" aria-label="Email address">
+          <button id="submitBtn">Request Access</button>
+        </div>
+        <p class="signup-note">Be the first to reserve when we open. No noise — only the announcement.</p>
+      </div>
+      <div class="signup-success" id="success">You're on the list. ✦</div>
+    </div>
+  </main>
+
+  <!-- PREVIEW STRIP -->
+  <div class="preview">
+    <div class="preview-item">Relocation</div>
+    <div class="preview-item">Arrangement</div>
+    <div class="preview-item">Mounting</div>
+    <div class="preview-item">Assembly</div>
+    <div class="preview-item">Sauna</div>
+    <div class="preview-item">The Lifestyle</div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 CJ'S Moving Company</span>
+    <span>Enquiries — <a href="mailto:atelier@cjs.co">atelier@cjs.co</a></span>
+  </footer>
+
+<script>
+  const btn = document.getElementById('submitBtn');
+  const emailEl = document.getElementById('email');
+  const form = document.getElementById('signupForm');
+  const success = document.getElementById('success');
+
+  function submit() {
+    const v = emailEl.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if (!valid) {
+      emailEl.parentElement.style.borderBottomColor = 'var(--gold)';
+      emailEl.focus();
+      return;
+    }
+    form.style.display = 'none';
+    success.classList.add('show');
+  }
+  btn.addEventListener('click', submit);
+  emailEl.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+</script>
+</body>
+</html>
