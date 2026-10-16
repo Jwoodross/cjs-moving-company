@@ -517,9 +517,10 @@ a.club-cta:hover { background: var(--cream); color: var(--deep); gap: 2rem; }
 .story-body p { font-size: 1.1rem; line-height: 1.85; color: rgba(244,239,230,.84); text-wrap: pretty; }
 .story-body p + p { margin-top: 1.35rem; }
 .story-body p:first-child { font-size: 1.32rem; line-height: 1.6; color: var(--cream); letter-spacing: -.01em; }
-.story-body p:last-child { margin-top: 2.2rem; color: var(--cream); }
+.story-body p:last-of-type { margin-top: 2.2rem; color: var(--cream); }
 @media (max-width: 900px) {
   .story { padding-top: 56px; padding-bottom: 72px; }
   .story-body p { font-size: 1rem; }
   .story-body p:first-child { font-size: 1.16rem; }
 }
+.story-cta { margin-top: 3rem; }
